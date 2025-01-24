@@ -5,13 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eminent.lk</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; margin: 0; padding: 0; }
-        header { background-color: #1414AF; color: white; padding: 10px; }
-        section { padding: 20px; }
-        a { color: #1414AF; text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
-        .headline { font-size: 24px; font-weight: bold; margin-bottom: 20px; }
-        img { max-width: 100%; height: auto; margin-top: 20px; }
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0; 
+        }
+        header { 
+            background-color: #1414AF; 
+            color: white; 
+            padding: 10px; 
+        }
+        section { 
+            padding: 20px; 
+        }
+        a { 
+            color: #1414AF; 
+            text-decoration: none; 
+            font-weight: bold; 
+        }
+        a:hover { 
+            text-decoration: underline; 
+        }
+        .headline { 
+            font-size: 24px; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+        }
+        img { 
+            max-width: 100%; 
+            height: auto; 
+            margin-top: 20px; 
+        }
+        .flipbook-container {
+            position: relative;
+            padding-top: max(60%, 324px); 
+            width: 100%; 
+            height: 0;
+        }
+        .flipbook-container iframe {
+            position: absolute; 
+            border: none; 
+            width: 100%; 
+            height: 100%; 
+            left: 0; 
+            top: 0;
+        }
     </style>
 </head>
 <body>
@@ -22,6 +61,18 @@
         <p class="headline">EMINENT TEA - ARTISAN CEYLON TEA</p>        
         <p><a href="https://eminenttea.com" target="_blank">Visit our main website: eminenttea.com</a></p>
         <img src="https://github.com/eminenttea/eminenttea/raw/main/image1.jpg" alt="Artisan Ceylon Tea">
+        
+        <!-- FlipHTML5 Flipbook Embed -->
+        <div class="flipbook-container">
+            <iframe 
+                src="https://online.fliphtml5.com/zgkze/liqr/" 
+                seamless="seamless" 
+                scrolling="no" 
+                frameborder="0" 
+                allowtransparency="true" 
+                allowfullscreen="true">
+            </iframe>
+        </div>
     </section>
 </body>
 </html>
