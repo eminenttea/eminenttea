@@ -1,49 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eminent.lk</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            text-align: center; 
-            margin: 0; 
-            padding: 0; 
-        }
-        header { 
-            background-color: #1414AF; 
-            color: white; 
-            padding: 10px; 
-        }
-        section { 
-            padding: 20px; 
-        }
-        a { 
-            color: #1414AF; 
-            text-decoration: none; 
-            font-weight: bold; 
-        }
-        a:hover { 
-            text-decoration: underline; 
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#10195c">
+  <meta name="description" content="Explore the Eminent Tea catalogue.">
+  <title>Eminent Tea Catalogue</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310195c'/%3E%3Cpath d='M15 18h34v7H23v7h22v7H23v7h26v7H15z' fill='%23d6ad55'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Eminent.lk</h1>
-    </header>
-    <section>
-        <p><a href="https://eminenttea.com" target="_blank">Visit our main website: eminenttea.com</a></p>
-        
-        <!-- New FlipHTML5 Flipbook Embed -->
-        <div style="position:relative;padding-top:max(60%,324px);width:100%;height:0;">
-            <iframe style="position:absolute;border:none;width:100%;height:100%;left:0;top:0;" 
-                src="https://online.fliphtml5.com/zgkze/cthq/" 
-                seamless="seamless" scrolling="no" frameborder="0" 
-                allowtransparency="true" allowfullscreen="true">
-            </iframe>
-        </div>
+  <header class="brandbar">
+    <a class="brand" href="https://eminenttea.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Eminent Tea website">
+      <span class="brand-mark" aria-hidden="true">E</span>
+      <span>
+        <strong>EMINENT</strong>
+        <small>CEYLON TEA</small>
+      </span>
+    </a>
+    <div class="catalogue-title">Product Catalogue</div>
+    <a class="website-link" href="https://eminenttea.com" target="_blank" rel="noopener noreferrer">eminenttea.com</a>
+  </header>
+
+  <main class="reader" id="reader">
+    <div class="rotate-notice" id="rotateNotice" role="status">
+      <span class="phone-icon" aria-hidden="true">↻</span>
+      <span><strong>Rotate your phone</strong><small>Turn to landscape to view the double-page catalogue.</small></span>
+    </div>
+
+    <section class="book-stage" id="bookStage" aria-label="Eminent Tea catalogue">
+      <button class="edge-button edge-prev" id="edgePrev" type="button" aria-label="Previous pages">‹</button>
+      <div class="book" id="book" aria-live="polite">
+        <figure class="page page-left" id="leftPage">
+          <img id="leftImage" alt="" draggable="false">
+          <figcaption id="leftNumber"></figcaption>
+        </figure>
+        <div class="book-spine" aria-hidden="true"></div>
+        <figure class="page page-right" id="rightPage">
+          <img id="rightImage" alt="" draggable="false">
+          <figcaption id="rightNumber"></figcaption>
+        </figure>
+        <div class="flip-sheet" id="flipSheet" aria-hidden="true"></div>
+      </div>
+      <button class="edge-button edge-next" id="edgeNext" type="button" aria-label="Next pages">›</button>
+      <div class="loading" id="loading" role="status">Loading catalogue…</div>
     </section>
+
+    <nav class="toolbar" aria-label="Catalogue controls">
+      <div class="tool-group navigation-tools">
+        <button id="firstBtn" type="button" title="First page" aria-label="First page">|‹</button>
+        <button id="prevBtn" type="button" title="Previous pages" aria-label="Previous pages">‹</button>
+        <label class="page-jump" title="Go to page">
+          <span class="sr-only">Go to page</span>
+          <input id="pageInput" type="number" min="1" max="64" value="1" inputmode="numeric" aria-label="Page number">
+          <span>/ 64</span>
+        </label>
+        <button id="nextBtn" type="button" title="Next pages" aria-label="Next pages">›</button>
+        <button id="lastBtn" type="button" title="Last page" aria-label="Last page">›|</button>
+      </div>
+      <div class="tool-group view-tools">
+        <button id="thumbBtn" type="button" title="Thumbnails" aria-label="Show thumbnails" aria-expanded="false">▦</button>
+        <button id="zoomOutBtn" type="button" title="Zoom out" aria-label="Zoom out">−</button>
+        <span id="zoomLabel" class="zoom-label" aria-live="polite">100%</span>
+        <button id="zoomInBtn" type="button" title="Zoom in" aria-label="Zoom in">＋</button>
+        <button id="resetZoomBtn" type="button" title="Reset zoom" aria-label="Reset zoom">↺</button>
+        <button id="fullscreenBtn" type="button" title="Fullscreen" aria-label="Enter fullscreen">⛶</button>
+      </div>
+    </nav>
+  </main>
+
+  <aside class="thumbnail-panel" id="thumbnailPanel" aria-label="Page thumbnails" aria-hidden="true">
+    <div class="thumbnail-head">
+      <strong>Pages</strong>
+      <button id="closeThumbBtn" type="button" aria-label="Close thumbnails">×</button>
+    </div>
+    <div class="thumbnail-grid" id="thumbnailGrid"></div>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <script src="app.js"></script>
 </body>
 </html>
