@@ -3,81 +3,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#10195c">
-  <meta name="description" content="Explore the Eminent Tea catalogue.">
-  <title>Eminent Tea Catalogue</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310195c'/%3E%3Cpath d='M15 18h34v7H23v7h22v7H23v7h26v7H15z' fill='%23d6ad55'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#0d1430">
+  <meta name="description" content="Explore the 64-page Eminent Artisan Ceylon Tea catalogue.">
+  <title>Eminent | Tea Catalogue</title>
+  <link rel="canonical" href="https://eminent.lk/">
+  <link rel="icon" type="image/png" href="assets/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css?v=20260925">
+  <script defer src="reader-core.js?v=20260925"></script>
+  <script defer src="app.js?v=20260925"></script>
 </head>
 <body>
-  <header class="brandbar">
-    <a class="brand" href="https://eminenttea.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Eminent Tea website">
-      <span class="brand-mark" aria-hidden="true">E</span>
-      <span>
-        <strong>EMINENT</strong>
-        <small>CEYLON TEA</small>
-      </span>
-    </a>
-    <div class="catalogue-title">Product Catalogue</div>
-    <a class="website-link" href="https://eminenttea.com" target="_blank" rel="noopener noreferrer">eminenttea.com</a>
-  </header>
-
-  <main class="reader" id="reader">
-    <div class="rotate-notice" id="rotateNotice" role="status">
-      <span class="phone-icon" aria-hidden="true">↻</span>
-      <span><strong>Rotate your phone</strong><small>Turn to landscape to view the double-page catalogue.</small></span>
-    </div>
-
-    <section class="book-stage" id="bookStage" aria-label="Eminent Tea catalogue">
-      <button class="edge-button edge-prev" id="edgePrev" type="button" aria-label="Previous pages">‹</button>
-      <div class="book" id="book" aria-live="polite">
-        <figure class="page page-left" id="leftPage">
-          <img id="leftImage" alt="" draggable="false">
-          <figcaption id="leftNumber"></figcaption>
-        </figure>
-        <div class="book-spine" aria-hidden="true"></div>
-        <figure class="page page-right" id="rightPage">
-          <img id="rightImage" alt="" draggable="false">
-          <figcaption id="rightNumber"></figcaption>
-        </figure>
-        <div class="flip-sheet" id="flipSheet" aria-hidden="true"></div>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-first" viewBox="0 0 24 24"><path d="M5 5v14m13-14-7 7 7 7"/></symbol>
+    <symbol id="i-last" viewBox="0 0 24 24"><path d="M19 5v14M6 5l7 7-7 7"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-fit" viewBox="0 0 24 24"><path d="M4 9V4h5m6 0h5v5m0 6v5h-5M9 20H4v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M14 4h6v6m0-6L10 14m0-10H4v16h16v-6"/></symbol>
+    <symbol id="i-rotate" viewBox="0 0 24 24"><rect x="8" y="5" width="8" height="14" rx="2" transform="rotate(30 12 12)"/><path d="M3 9a9 9 0 0 1 5-6M3 5v4h4m14 6a9 9 0 0 1-5 6m5-2v-4h-4"/></symbol>
+  </svg>
+  <div class="app" id="app">
+    <header class="brandbar">
+      <a class="brand" href="https://eminenttea.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Eminent Tea's main website">
+        <img class="brand-logo" src="assets/eminent-logo.png" width="1200" height="724" alt="Eminent Artisan Ceylon Tea">
+      </a>
+      <h1>Product Catalogue</h1>
+      <a class="website-link" href="https://eminenttea.com/" target="_blank" rel="noopener noreferrer">
+        <span><span class="website-label">Visit Our Main Website.</span><strong>eminenttea.com</strong></span>
+        <svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>
+      </a>
+    </header>
+    <main class="reader" id="reader">
+      <div class="rotate-notice" id="rotateNotice" role="note">
+        <svg class="icon" aria-hidden="true"><use href="#i-rotate"/></svg>
+        <div><strong>Rotate your phone to landscape</strong><p>For a larger double-page view. On iPhone, turn off Portrait Orientation Lock in Control Centre if the screen stays upright.</p></div>
       </div>
-      <button class="edge-button edge-next" id="edgeNext" type="button" aria-label="Next pages">›</button>
-      <div class="loading" id="loading" role="status">Loading catalogue…</div>
-    </section>
-
-    <nav class="toolbar" aria-label="Catalogue controls">
-      <div class="tool-group navigation-tools">
-        <button id="firstBtn" type="button" title="First page" aria-label="First page">|‹</button>
-        <button id="prevBtn" type="button" title="Previous pages" aria-label="Previous pages">‹</button>
-        <label class="page-jump" title="Go to page">
-          <span class="sr-only">Go to page</span>
-          <input id="pageInput" type="number" min="1" max="64" value="1" inputmode="numeric" aria-label="Page number">
-          <span>/ 64</span>
-        </label>
-        <button id="nextBtn" type="button" title="Next pages" aria-label="Next pages">›</button>
-        <button id="lastBtn" type="button" title="Last page" aria-label="Last page">›|</button>
-      </div>
-      <div class="tool-group view-tools">
-        <button id="thumbBtn" type="button" title="Thumbnails" aria-label="Show thumbnails" aria-expanded="false">▦</button>
-        <button id="zoomOutBtn" type="button" title="Zoom out" aria-label="Zoom out">−</button>
-        <span id="zoomLabel" class="zoom-label" aria-live="polite">100%</span>
-        <button id="zoomInBtn" type="button" title="Zoom in" aria-label="Zoom in">＋</button>
-        <button id="resetZoomBtn" type="button" title="Reset zoom" aria-label="Reset zoom">↺</button>
-        <button id="fullscreenBtn" type="button" title="Fullscreen" aria-label="Enter fullscreen">⛶</button>
-      </div>
-    </nav>
-  </main>
-
-  <aside class="thumbnail-panel" id="thumbnailPanel" aria-label="Page thumbnails" aria-hidden="true">
-    <div class="thumbnail-head">
-      <strong>Pages</strong>
-      <button id="closeThumbBtn" type="button" aria-label="Close thumbnails">×</button>
-    </div>
-    <div class="thumbnail-grid" id="thumbnailGrid"></div>
-  </aside>
-  <div class="scrim" id="scrim" hidden></div>
-
-  <script src="app.js"></script>
+      <section class="book-stage" id="bookStage" aria-label="Eminent catalogue reader" aria-describedby="gestureHint">
+        <button class="edge-button edge-prev" id="edgePrev" type="button" aria-label="Previous pages"><svg class="icon" aria-hidden="true"><use href="#i-prev"/></svg></button>
+        <div class="pan-layer" id="panLayer">
+          <div class="book" id="book">
+            <figure class="page page-left is-empty" id="leftPage"><img id="leftImage" alt="" draggable="false"></figure>
+            <figure class="page page-right is-empty" id="rightPage"><img id="rightImage" alt="" draggable="false"></figure>
+            <div class="book-spine" id="spine" aria-hidden="true" hidden></div>
+            <div class="turn-shadow" id="turnShadow" aria-hidden="true" hidden></div>
+            <div class="turn-leaf" id="turnLeaf" aria-hidden="true" hidden>
+              <div class="leaf-face leaf-front"><img id="leafFront" alt="" draggable="false"><span class="leaf-shade"></span></div>
+              <div class="leaf-face leaf-back"><img id="leafBack" alt="" draggable="false"><span class="leaf-shade"></span></div>
+            </div>
+          </div>
+        </div>
+        <button class="edge-button edge-next" id="edgeNext" type="button" aria-label="Next pages"><svg class="icon" aria-hidden="true"><use href="#i-next"/></svg></button>
+        <div class="loading" id="loading" role="status" hidden>Loading pages…</div>
+        <div class="page-error" id="pageError" role="alert" hidden><p id="errorMessage"></p><button id="retryBtn" type="button">Try again</button></div>
+      </section>
+      <div class="reading-meta"><span id="spreadLabel" aria-live="polite">Cover · 1 / 64</span><span id="gestureHint">Drag a page to turn · Pinch or use + to zoom</span></div>
+      <nav class="toolbar" aria-label="Catalogue controls">
+        <div class="tool-group navigation-tools">
+          <button id="firstBtn" type="button" title="First page" aria-label="First page"><svg class="icon" aria-hidden="true"><use href="#i-first"/></svg></button>
+          <button id="prevBtn" type="button" title="Previous pages" aria-label="Previous pages"><svg class="icon" aria-hidden="true"><use href="#i-prev"/></svg></button>
+          <form id="pageForm" class="page-jump"><label for="pageInput">Page</label><input id="pageInput" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" value="1" autocomplete="off" enterkeyhint="go" aria-label="Page number"><span>/ 64</span><button class="sr-only" type="submit">Go to page</button></form>
+          <button id="nextBtn" type="button" title="Next pages" aria-label="Next pages"><svg class="icon" aria-hidden="true"><use href="#i-next"/></svg></button>
+          <button id="lastBtn" type="button" title="Last page" aria-label="Last page"><svg class="icon" aria-hidden="true"><use href="#i-last"/></svg></button>
+        </div>
+        <div class="tool-group view-tools">
+          <button id="thumbBtn" type="button" title="Thumbnails" aria-label="Show thumbnails" aria-haspopup="dialog"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></button>
+          <button id="zoomOutBtn" type="button" title="Zoom out" aria-label="Zoom out"><svg class="icon" aria-hidden="true"><use href="#i-minus"/></svg></button>
+          <output id="zoomLabel" class="zoom-label">100%</output>
+          <button id="zoomInBtn" type="button" title="Zoom in" aria-label="Zoom in"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          <button id="resetZoomBtn" type="button" title="Fit pages" aria-label="Fit pages"><svg class="icon" aria-hidden="true"><use href="#i-fit"/></svg></button>
+          <button id="fullscreenBtn" type="button" title="Fullscreen" aria-label="Enter fullscreen" aria-pressed="false"><svg class="icon" aria-hidden="true"><use id="fullscreenIcon" href="#i-expand"/></svg></button>
+        </div>
+      </nav>
+    </main>
+    <dialog class="thumbnail-panel" id="thumbnailPanel" aria-labelledby="thumbnailTitle">
+      <div class="thumbnail-head"><div><h2 id="thumbnailTitle">Catalogue pages</h2><span>64 pages · Select a page to open</span></div><button id="closeThumbBtn" type="button" aria-label="Close thumbnails"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button></div>
+      <div class="thumbnail-grid" id="thumbnailGrid"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" hidden></div>
+  </div>
+  <noscript>Please enable JavaScript to use the catalogue, or <a href="pages/page-01.jpg">open the cover image</a>.</noscript>
 </body>
 </html>
